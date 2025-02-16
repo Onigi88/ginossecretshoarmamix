@@ -11,7 +11,8 @@
                 document.getElementById("error").style.display = "none";
                 document.getElementById("loading").style.display = "block";
                 document.getElementById("countdown").style.display = "block";
-                document.getElementById("success-sound").play();
+                document.getElementById("success-sound").play(); // 🎵 Speel succesgeluid af
+                document.getElementById("recipe").classList.remove("hidden");
                 
                 var timeLeft = 30; // Start bij 30 seconden
                 var timer = setInterval(function() {
@@ -79,7 +80,7 @@
         #timer {
             font-size: 40px;
             font-weight: bold;
-            color: yellow;
+            color: orange;
         }
     </style>
 </head>
