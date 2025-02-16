@@ -11,6 +11,7 @@
                 document.getElementById("error").style.display = "none";
                 document.getElementById("loading").style.display = "block";
                 document.getElementById("countdown").style.display = "block";
+                document.getElementById("success-sound").play();
                 
                 var timeLeft = 30; // Start bij 30 seconden
                 var timer = setInterval(function() {
@@ -83,6 +84,9 @@
     </style>
 </head>
 <body>
+    <audio id="success-sound">
+    <source src="sounds/GLaDOS_03_part1_success-1.wav" type="audio/wav">
+</audio>
     <div id="container">
         <h2>Voer het wachtwoord in om de Secret Shoarma Mix te ontgrendelen:</h2>
         <input type="password" id="password" placeholder="Wachtwoord">
@@ -90,7 +94,7 @@
 
         <p id="error">Fout wachtwoord! Probeer opnieuw.</p>
 
-        <p id="loading">Even geduld... Je recept wordt geladen! ⏳</p>
+        <p id="loading">Even geduld... Je recept wordt geladen!</p>
         
         <div id="countdown">
             Recept verschijnt over: <span id="timer">30</span> seconden...
