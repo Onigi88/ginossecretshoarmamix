@@ -5,17 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Shoarma Mix</title>
     <script>
-        function checkPassword() {
-            var input = document.getElementById("password").value;
-            if (input === "dankjulliewelentotziens!") {
-                document.getElementById("error").style.display = "none";
-                document.getElementById("loading").style.display = "block";
-                document.getElementById("countdown").style.display = "block";
-                
-                var timeLeft = 30; // Start bij 30 seconden
+       function checkPassword(input) {
+    const correctPassword = "dankjulliewelentotziens!";
+    if (input === correctPassword) {
+        successSound.play();  // Speel succesgeluid af
+        setTimeout(() => revealSound.play(), 1000);  // Speel reveal-geluid na 1 sec
+        showRecipe();  // Onthul het recept
+    } else {
+        errorSound.play();  // Speel error-geluid af
+        alert("Verkeerd wachtwoord! Probeer opnieuw.");
+        <input type="password" id="passwordInput">
+<button onclick="checkPassword(document.getElementById('passwordInput').value)">Check</button>
+    }
+}               
+        }
+    }, 1000);
+}
+        <button onclick="startCountdown()">Start Timer</button>
+               var timeLeft = 30; // Start bij 30 seconden
                 var timer = setInterval(function() {
                     document.getElementById("timer").textContent = timeLeft;
                     timeLeft--;
+                    
+                    let timer = 30;
+function startCountdown() {
+    const interval = setInterval(() => {
+        if (timer > 30) {
+            countdownSound.play();  // Speel timer-geluid af
+            timer--;
+        } else {
+            clearInterval(interval);
 
                     if (timeLeft < 0) {
                         clearInterval(timer);
@@ -113,5 +132,14 @@
           <p>Eet smakelijk!</p>
         </div>
     </div>
+    <audio id="success-sound" src="sounds/GLaDOS_03_part1_succes-1.wav"></audio>
+<audio id="error-sound" src="sounds/Voicy_computer says no.mp3"></audio>
+<audio id="countdown-sound" src="sounds/Voicy_No God Please No!.mp3"></audio>
+<audio id="reveal-sound" src="sounds/Voicy_Doe ff een broodje!.mp3"></audio>
+// Geluiden selecteren
+const successSound = document.getElementById("success-sound");
+const errorSound = document.getElementById("error-sound");
+const countdownSound = document.getElementById("countdown-sound");
+const revealSound = document.getElementById("reveal-sound");
 </body>
 </html>
