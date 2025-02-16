@@ -4,142 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Shoarma Mix</title>
-    <script>
-       function checkPassword(input) {
-    const correctPassword = "dankjulliewelentotziens!";
-    if (input === correctPassword) {
-        successSound.play();  // Speel succesgeluid af
-        setTimeout(() => revealSound.play(), 1000);  // Speel reveal-geluid na 1 sec
-        showRecipe();  // Onthul het recept
-    } else {
-        errorSound.play();  // Speel error-geluid af
-        alert("Verkeerd wachtwoord! Probeer opnieuw.");
-        <input type="password" id="passwordInput">
-<button onclick="checkPassword(document.getElementById('passwordInput').value)">Check</button>
-    }
-}               
-        }
-    }, 1000);
-}
-        <button onclick="startCountdown()">Start Timer</button>
-               var timeLeft = 30; // Start bij 30 seconden
-                var timer = setInterval(function() {
-                    document.getElementById("timer").textContent = timeLeft;
-                    timeLeft--;
-                    
-                    let timer = 30;
-function startCountdown() {
-    const interval = setInterval(() => {
-        if (timer > 30) {
-            countdownSound.play();  // Speel timer-geluid af
-            timer--;
-        } else {
-            clearInterval(interval);
-
-                    if (timeLeft < 0) {
-                        clearInterval(timer);
-                        document.getElementById("loading").style.display = "none";
-                        document.getElementById("countdown").style.display = "none";
-                        document.getElementById("recipe").style.display = "block";
-                    }
-                }, 1000);
-            } else {
-                document.getElementById("error").style.display = "block";
-                document.getElementById("recipe").style.display = "none";
-            }
-        }
-    </script>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin-top: 50px; 
-            background-image: url('https://images.pexels.com/photos/4199098/pexels-photo-4199098.jpeg'); 
-            background-size: cover; 
-            background-position: center; 
-            color: white; 
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-        #container {
-            background: rgba(0, 0, 0, 0.7); 
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-        input, button {
-            margin-top: 10px;
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            background: orange;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:hover {
-            background: darkorange;
-        }
-        #recipe, #loading, #countdown { 
-            display: none; 
-            margin-top: 20px; 
-            font-weight: bold;
-        }
-        #error { 
-            color: red; 
-            display: none; 
-        }
-        #countdown {
-            font-size: 24px;
-            margin-top: 10px;
-        }
-        #timer {
-            font-size: 40px;
-            font-weight: bold;
-            color: orange;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <h2>Voer hier het wachtwoord in om de Secret Shoarma Mix te ontgrendelen:</h2>
-        <input type="password" id="password" placeholder="Wachtwoord">
-        <button onclick="checkPassword()">Ontgrendel</button>
 
-        <p id="error">Fout wachtwoord! Probeer opnieuw.</p>
+    <h1>🔒 Ontgrendel het geheime recept! 🔒</h1>
+    <p>Voer het juiste wachtwoord in om de <b>Secret Shoarma Mix</b> te onthullen.</p>
 
-        <p id="loading">Even geduld... Je recept wordt geladen!</p>
-        
-        <div id="countdown">
-            Recept verschijnt over: <span id="timer">30</span> seconden...
-        </div>
+    <input type="password" id="passwordInput" placeholder="Voer wachtwoord in...">
+    <button onclick="checkPassword()">Check</button>
 
-        <div id="recipe">
-            <h3>Gefeliciteerd!</h3>
-          <h3>Hier is de Secret Shoarma Mix:</h3>
-            <p>1. 5 delen paprikapoeder</p>
-            <p>2. 5 delen paprikapoeder gerookt (pimentón)</p>
-            <p>3. 5 delen gemalen korianderzaad</p>
-            <p>4. 5 delen gemalen komijn</p>
-            <p>5. 1 deel knoflookpoeder</p>
-            <p>6. 1 deel tijm</p>
-            <p>7. 3 delen zwarte peper</p>
-            <p>8. 1 deel chilivlokken</p>
-          <br>
-          <p> Bedankt voor de fijne samenwerking en de leuke en leerzame tijd! </p>
-          <br>
-          <p>Eet smakelijk!</p>
-        </div>
+    <div id="countdown"></div>
+
+    <div id="recipe" class="hidden">
+        <h2>🎉 Gefeliciteerd! Hier is het recept: 🎉</h2>
+        <p>1. 5 delen paprikapoeder</p>
+        <p>2. 5 delen paprikapoeder gerookt (pimentón)</p>
+        <p>3. 5 delen gemalen korianderzaad</p>
+        <p>4. 5 delen gemalen komijn</p>
+        <p>5. 1 deel knoflookpoeder</p>
+        <p>6. 1 deel tijm</p>
+        <p>7. 3 delen zwarte peper</p>
+        <p>8. 1 deel chilivlokken</p>
     </div>
-    <audio id="success-sound" src="sounds/GLaDOS_03_part1_succes-1.wav"></audio>
-<audio id="error-sound" src="sounds/Voicy_computer says no.mp3"></audio>
-<audio id="countdown-sound" src="sounds/Voicy_No God Please No!.mp3"></audio>
-<audio id="reveal-sound" src="sounds/Voicy_Doe ff een broodje!.mp3"></audio>
-// Geluiden selecteren
-const successSound = document.getElementById("success-sound");
-const errorSound = document.getElementById("error-sound");
-const countdownSound = document.getElementById("countdown-sound");
-const revealSound = document.getElementById("reveal-sound");
+
+    <!-- 🔊 Audio-bestanden -->
+    <audio id="success-sound" src="sounds/GLaDOS_03_part1_success-1.wav"></audio>
+    <audio id="error-sound" src="sounds/Voicy_Computer says no.mp3"></audio>
+    <audio id="countdown-sound" src="sounds/Voicy_No God Please No!.mp3"></audio>
+    <audio id="reveal-sound" src="sounds/Voicy_Doe ff een broodje!.mp3"></audio>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
