@@ -21,14 +21,15 @@
 
                     if (timeLeft < 0) {
                         clearInterval(timer);
+                        document.getElementById("reveal-sound").play(); // 🎶 Speel reveal-geluid af
                         document.getElementById("loading").style.display = "none";
                         document.getElementById("countdown").style.display = "none";
                         document.getElementById("recipe").style.display = "block";
                     }
                 }, 1000);
             } else {
+                document.getElementById("reveal-sound").play(); // 🎶 Speel reveal-geluid af
                 document.getElementById("error").style.display = "block";
-                document.getElementById("recipe").style.display = "none";
             }
         }
     </script>
@@ -87,6 +88,9 @@
 <body>
     <audio id="success-sound">
     <source src="GLaDOS_03_part1_success-1.wav" type="audio/wav">
+</audio>
+<audio id="reveal-sound">
+    <source src="Voicy_Doe ff een broodje!.mp3" type="audio/mp3">
 </audio>
     <div id="container">
         <h2>Voer het wachtwoord in om de Secret Shoarma Mix te ontgrendelen:</h2>
